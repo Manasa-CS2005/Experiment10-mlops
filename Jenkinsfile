@@ -2,12 +2,13 @@ pipeline {
 	agent any
 
 	environment {
-		PYTHON = 'C:\\Users\\Dell\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe'
+		PYTHON = 'python'
 	}
 
 	stages {
 		stage('Install Dependencies') {
 			steps {
+				bat 'where python'
 				bat '"%PYTHON%" --version'
 				bat '"%PYTHON%" -m pip install -r requirements.txt'
 			}
