@@ -2,13 +2,13 @@ pipeline {
 	agent any
 
 	environment {
-		PYTHON = 'python'
+		PYTHON = 'C:\\Users\\hamsa\\anaconda3\\python.exe'
 	}
 
 	stages {
 		stage('Install Dependencies') {
 			steps {
-				bat 'where python'
+				bat 'if not exist "%PYTHON%" (echo Python executable not found: %PYTHON% & exit /b 1)'
 				bat '"%PYTHON%" --version'
 				bat '"%PYTHON%" -m pip install -r requirements.txt'
 			}
